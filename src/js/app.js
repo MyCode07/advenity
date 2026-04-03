@@ -10,15 +10,17 @@ import { playVideoAction } from "./parts/video.js";
 
 // import { maskInputs } from "./static/inputmask.js";
 import { stickyHeader } from "./parts/header.js";
-// import { Fancybox } from "@fancyapps/ui";
+import { runTicker } from "./static/ticker.js";
+import { Fancybox } from "@fancyapps/ui";
 // import { replaceDomElements } from "./static/replace.js";
 
 // replaceDomElements()
 // maskInputs('+7 (999) 999-99-99', '._mask-phone')
 stickyHeader()
-// Fancybox.bind("[data-fancybox]", {
-// });
 playVideoAction();
+runTicker()
+Fancybox.bind("[data-fancybox]", {
+});
 
 document.addEventListener('click', function (e) {
     let targetEl = e.target;

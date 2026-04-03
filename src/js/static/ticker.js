@@ -1,9 +1,7 @@
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger.js";
-import { isMobile } from "../utils/isMobile.js";
 
 gsap.registerPlugin(ScrollTrigger)
-
 
 function scroll(target, options, reverse) {
     const timeline = gsap.timeline({
@@ -28,28 +26,28 @@ export const runTicker = () => {
 
     if (!ticker) return;
 
-    let time = ticker.dataset.speed ?? 20
 
     tickers.forEach(line => {
+        let time = line.closest('._ticker').dataset.speed ?? 25
+
         let direction = 1;
         const roll = scroll(line, { duration: time })
 
-        // if (!isMobile.any())
-        //     ScrollTrigger.create({
-        //         onUpdate(self) {
-        //             if (self.direction !== direction) {
-        //                 direction *= -1;
-        //                 gsap.to(roll, {
-        //                     timeScale: direction,
-        //                     overwrite: true,
-        //                 });
-        //             }
-        //             roll.timeScale(self.direction * 2)
+        ScrollTrigger.create({
+            onUpdate(self) {
+                if (self.direction !== direction) {
+                    direction *= -1;
+                    gsap.to(roll, {
+                        timeScale: direction,
+                        overwrite: true,
+                    });
+                }
+                roll.timeScale(self.direction * 2)
 
-        //             setTimeout(() => {
-        //                 roll.timeScale(self.direction)
-        //             }, 100);
-        //         }
-        //     });
+                setTimeout(() => {
+                    roll.timeScale(self.direction)
+                }, 100);
+            }
+        });
     })
 }
