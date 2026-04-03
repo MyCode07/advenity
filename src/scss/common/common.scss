@@ -1,0 +1,305 @@
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    scroll-behavior: smooth;
+    font-style: normal;
+    letter-spacing: normal;
+    font-family: "Involve";
+    line-height: 100%;
+    font-weight: 400;
+    font-size: 18px;
+    color: $white;
+    background-color: $black;
+
+    @media (max-width:1024px) {
+        font-size: 16px;
+    }
+
+    &._noscroll {
+        overflow: hidden;
+    }
+
+    * {
+        line-height: 100%;
+    }
+}
+
+.wrapper {
+    position: relative;
+    min-height: 100%;
+    scroll-behavior: smooth;
+    overflow-x: clip;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+main {
+    position: relative;
+    flex: 1 1 auto;
+}
+
+._container {
+    width: 100%;
+    margin-inline: auto;
+    max-width: $container + px;
+
+    @media (max-width: $containerWithPadding + px) {
+        max-width: none;
+        padding-inline: $padding + px;
+    }
+
+    @media (max-width:1024px) {
+        padding-inline: 20px;
+    }
+}
+
+._desktop {
+    @media (max-width:1024px) {
+        display: none !important;
+    }
+}
+
+._mobile {
+    @media (min-width:1025px) {
+        display: none !important;
+    }
+}
+
+.swiper {
+    &-slide {
+        height: auto;
+    }
+
+    &-pagination-lock,
+    &-button-lock {
+        display: none !important;
+    }
+
+    &-button-disabled {
+        opacity: 0.5;
+    }
+}
+
+[data-open-popup] * {
+    pointer-events: none;
+}
+
+img,
+picture,
+figure {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    letter-spacing: -0.01em;
+}
+
+h1 {
+    @include adaptive-value('font-size', 80, 38, 1);
+}
+
+.h1 {
+    padding-bottom: 40px;
+    position: relative;
+
+    @media (max-width:1024px) {
+        padding-bottom: 20px;
+    }
+
+    &:after {
+        width: 150vw;
+        left: -50vw;
+        bottom: 0;
+        height: 1px;
+        background-color: rgba($color: $white, $alpha: 0.2);
+        position: absolute;
+        content: '';
+    }
+}
+
+h2 {
+    @include adaptive-value('font-size', 76, 28, 1);
+}
+
+h3 {
+    @include adaptive-value('font-size', 60, 24, 1);
+}
+
+h4 {
+    @include adaptive-value('font-size', 26, 20, 1);
+}
+
+h5 {
+    @include adaptive-value('font-size', 20, 18, 1);
+}
+
+._subtitle {
+    max-width: 500px;
+    line-height: 130%;
+    @include adaptive-value('font-size', 22, 16, 1);
+}
+
+._btn {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    gap: 20px;
+    border: 1px solid rgba($color: $white, $alpha: 0.2);
+    width: 220px;
+    transition: all 0.3s ease 0s;
+
+    @media (max-width:1024px) {
+        padding: 15px;
+        gap: 15px;
+        width: 100%;
+    }
+
+    span {
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 110%;
+    }
+
+    img,
+    svg {
+        width: 16x;
+        height: 16x;
+        flex: 0 0 auto;
+        stroke: currentColor;
+        margin-left: auto;
+        transition: stroke 0.3s ease 0s;
+    }
+
+    &:hover {
+        background-color: $white;
+        color: $black;
+    }
+
+    // ._btn-white
+    &-white {
+        background-color: $white;
+        color: $black;
+
+        &:hover {
+            background-color: transparent;
+            color: $white;
+        }
+    }
+}
+
+.dot {
+    width: 6px;
+    height: 6px;
+    flex: 0 0 auto;
+    display: block;
+    background-color: #FF0000;
+}
+
+.text-box {
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        @include adaptive-value('margin-bottom', 30, 16, 1);
+
+        &:not(:first-child) {
+            margin-top: 40px;
+        }
+    }
+
+    b,
+    strong {
+        font-weight: 600;
+    }
+
+    h1 {
+        @include adaptive-value('font-size', 70, 32, 1);
+    }
+
+    h2 {
+        @include adaptive-value('font-size', 46, 26, 1);
+    }
+
+    h3 {
+        @include adaptive-value('font-size', 36, 22, 1);
+    }
+
+    p,
+    ol,
+    ul,
+    a,
+    b,
+    strong,
+    em,
+    i {
+        margin-bottom: 1em;
+        @include adaptive-value('font-size', 20, 14, 1);
+    }
+
+    b,
+    strong {
+        font-weight: 600;
+    }
+
+    a {}
+
+    & > :last-child {
+        margin-bottom: 0;
+    }
+
+    ul,
+    ol {
+        padding-left: 1.5em;
+
+        & > :not(:last-child) {
+            margin-bottom: 0.75em;
+        }
+    }
+
+    ul {
+        li {
+            list-style: disc;
+        }
+    }
+
+    ol {
+        li {
+            list-style: decimal;
+        }
+    }
+
+    img,
+    picture,
+    figure {
+        margin-bottom: 1em;
+        width: auto;
+        height: auto;
+    }
+
+    figure {
+
+        img,
+        picture {
+            margin-bottom: 0;
+        }
+    }
+
+    figcaption {
+        display: block;
+        font-size: 12px;
+        margin-top: 1em;
+    }
+}
