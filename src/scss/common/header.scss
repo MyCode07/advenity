@@ -8,7 +8,7 @@
     font-weight: 500;
     border-bottom: 1px solid rgba($color: $white, $alpha: 0.2);
 
-    &._sticky{
+    &._sticky {
         background-color: rgba($color: $white, $alpha: 0.03);
         backdrop-filter: blur(20px);
     }
@@ -175,4 +175,8 @@
             flex: 0 0 auto;
         }
     }
+}
+
+body:has(.menu._open) header {
+    background-color: $black;
 }
