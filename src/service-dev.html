@@ -1,0 +1,199 @@
+@@include('./html/head.html', {
+"title":"Разработка сайтов",
+})
+
+@@include('./html/header.html', {
+"class":"",
+})
+
+<main>
+
+    <section class="hero hero-page">
+        <div class="img">
+            <img src="img/case.png" alt="">
+        </div>
+        <div class="hero__container _container">
+            <div class="hero__body">
+                <div class="breadcrumbs">
+                    <ul>
+                        <li>
+                            <a>
+                                <span>Главная</span>
+                            </a>
+                            <div class="sep">/</div>
+                        </li>
+                        <li>
+                            <a>
+                                <span>Услуги</span>
+                            </a>
+                            <div class="sep">/</div>
+                        </li>
+                        <li>
+                            <span>Разработка сайтов</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="h1">
+                    <h1>Разрабатываем сайты,<br>
+                        которые создают<br>
+                        сильный образ бренда</h1>
+                </div>
+                <p class="_subtitle">Обращаясь к нам, вы получаете не только качественные услуги, но и постоянную
+                    своевременную поддержку, что стратегически
+                    важно при продвижении вашего бизнеса в интернете.</p>
+                <a href="" class="_btn">
+                    <span>Обсудить <br> проект</span>
+                    <svg width="16" height="16" viewBox="0 0 16 16">
+                        <use xlink:href='img/svg/icons.svg#arrow-btn' />
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section approach" id="approach">
+        <div class="section__container _container">
+            <div class="section__body">
+                <div class="section__top">
+                    <span>
+                        <div class="dot"></div>подход
+                    </span>
+                    <h2>Наш подход</h2>
+                </div>
+                <div class="grid grid-4">
+                    <div class="approach-item">
+                        <span>/01</span>
+                        <h4>Раскрываем позиционирование</h4>
+                        <p>За 17 лет агентство обрело стратегическое мышление в маркетинге и разработке сайтов.
+                            Поэтому мы находим и формулируем преимущества бренда и его продуктов. Усиливаем текущее
+                            позиционирование.</p>
+                    </div>
+                    <div class="approach-item">
+                        <span>/02</span>
+                        <h4>Дизайн как преимущество</h4>
+                        <p>Влюбляем в бренд через красивый дизайн. Формируем желание попробовать продукт или услугу:
+                            выделяем сильные стороны, делаем сайт понятным и удобным. Усиливаем впечатление через
+                            анимации и интерактивы.</p>
+                    </div>
+                    <div class="approach-item">
+                        <span>/03</span>
+                        <h4>Думаем о синергии</h4>
+                        <p>Разрабатывая сайт, мы продумываем посадочные страницы для рекламного трафика, а также
+                            контентное и SEO-наполнение для органического продвижения. И конечно, учитываем интеграции с
+                            CRM, системами аналитики, телефонией и чатами.</p>
+                    </div>
+                    <a href="" class="_btn">
+                        <span>Обсудить проект</span>
+                        <svg width="16" height="16" viewBox="0 0 16 16">
+                            <use xlink:href='img/svg/icons.svg#arrow-btn' />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section cases" id="cases">
+        <div class="section__container _container">
+            <div class="section__body">
+                <div class="section__top">
+                    <span>
+                        <div class="dot"></div>Проекты
+                    </span>
+                    <h2>Выполненные проекты</h2>
+                </div>
+                <div class="grid grid-2">
+                    @@include('html/parts/case.html',{})
+                    @@include('html/parts/case.html',{})
+                </div>
+                @@include('html/parts/cases-all.html',{})
+            </div>
+        </div>
+    </section>
+
+    <section class="section cta" id="cta">
+        <div class="section__container _container">
+            <div class="section__body">
+                <div class="left">
+                    <img src="img/logo-art.png" alt="">
+                </div>
+                <div class="right">
+                    <img src="img/logo-art.png" alt="">
+                </div>
+
+                <h2>Высокая конверсия и сильный бренд</h2>
+                <p>Перфекционизм в дизайне и маркетинговое мышление максимизируют продажи в краткосрочной и
+                    долгосрочной перспективе.</p>
+                <a href="" class="_btn">
+                    <span>Обсудить <br> проект</span>
+                    <svg width="16" height="16" viewBox="0 0 16 16">
+                        <use xlink:href='img/svg/icons.svg#arrow-btn' />
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section types" id="types">
+        <div class="section__container _container">
+            <div class="section__body grid grid-2">
+                <div class="types-item">
+                    <h3>Лендинг</h3>
+                    <span class="price">~ 230 000 ₽</span>
+                    <p>Для тестирований бизнес-идей
+                        и получения быстрых результатов</p>
+                    <a href="" class="_btn">
+                        <span>Обсудить <br> проект</span>
+                        <svg width="16" height="16" viewBox="0 0 16 16">
+                            <use xlink:href='img/svg/icons.svg#arrow-btn' />
+                        </svg>
+                    </a>
+                </div>
+                <div class="types-item">
+                    <h3>Интернет-магазин</h3>
+                    <span class="price">~ 230 000 ₽</span>
+                    <p>Для тестирований бизнес-идей
+                        и получения быстрых результатов</p>
+                    <a href="" class="_btn">
+                        <span>Обсудить <br> проект</span>
+                        <svg width="16" height="16" viewBox="0 0 16 16">
+                            <use xlink:href='img/svg/icons.svg#arrow-btn' />
+                        </svg>
+                    </a>
+                </div>
+                <div class="types-item">
+                    <h3>Сайт-каталог</h3>
+                    <span class="price">~ 230 000 ₽</span>
+                    <p>Для тестирований бизнес-идей
+                        и получения быстрых результатов</p>
+                    <a href="" class="_btn">
+                        <span>Обсудить <br> проект</span>
+                        <svg width="16" height="16" viewBox="0 0 16 16">
+                            <use xlink:href='img/svg/icons.svg#arrow-btn' />
+                        </svg>
+                    </a>
+                </div>
+                <div class="types-item">
+                    <h3>Корпоративный сайт</h3>
+                    <span class="price">~ 230 000 ₽</span>
+                    <p>Для тестирований бизнес-идей
+                        и получения быстрых результатов</p>
+                    <a href="" class="_btn">
+                        <span>Обсудить <br> проект</span>
+                        <svg width="16" height="16" viewBox="0 0 16 16">
+                            <use xlink:href='img/svg/icons.svg#arrow-btn' />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    @@include('html/parts/callback.html',{})
+    @@include('html/parts/partners.html',{})
+
+</main>
+
+@@include('./html/footer.html')
+@@include('./html/scripts.html')

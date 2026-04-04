@@ -1,0 +1,45 @@
+@@include('./html/head.html', {
+"title":"Услуги",
+})
+
+@@include('./html/header.html', {
+"class":"",
+})
+
+<main>
+
+    <section class="section page-top">
+        <div class="section__container _container">
+            <div class="section__body">
+                <div class="breadcrumbs">
+                    <ul>
+                        <li>
+                            <a>
+                                <span>Главная</span>
+                            </a>
+                            <div class="sep">/</div>
+                        </li>
+                        <li>
+                            <span>Услуги</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="h1">
+                    <h1>Основные услуги</h1>
+                </div>
+
+                <div class="services">
+                    @@include('html/parts/services.html',{})
+                </div>
+            </div>
+        </div>
+    </section>
+
+    @@include('html/parts/callback.html',{})
+    @@include('html/parts/partners.html',{})
+
+</main>
+
+@@include('./html/footer.html')
+@@include('./html/scripts.html')

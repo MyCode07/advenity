@@ -123,7 +123,7 @@ main {
             width: 14px;
             height: 14px;
             flex: 0 0 auto;
-            stroke-width: $white;
+            stroke: $white;
             pointer-events: none;
         }
     }
@@ -220,6 +220,10 @@ h5 {
         width: 100%;
     }
 
+    * {
+        pointer-events: none;
+    }
+
     span {
         font-size: 16px;
         font-weight: 500;
@@ -229,8 +233,8 @@ h5 {
 
     img,
     svg {
-        width: 16x;
-        height: 16x;
+        width: 16px;
+        height: 16px;
         flex: 0 0 auto;
         stroke: currentColor;
         fill: none;
@@ -253,6 +257,18 @@ h5 {
             color: $white;
         }
     }
+
+    // ._btn-black
+    &-black {
+        background-color: $black;
+        color: $white;
+        border: 1px solid $black;
+
+        &:hover {
+            background-color: transparent;
+            color: $black;
+        }
+    }
 }
 
 .dot {
@@ -263,7 +279,39 @@ h5 {
     background-color: #FF0000;
 }
 
+.breadcrumbs {
+    padding-bottom: 80px;
+
+    @media (max-width:1024px) {
+        padding-bottom: 60px;
+    }
+
+    ul {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+
+        li {
+            display: flex;
+            gap: 10px;
+            font-size: 15px;
+            font-weight: 500;
+
+            @media (max-width:1024px) {
+                font-size: 13px;
+            }
+
+            &:last-child {
+                opacity: 0.4;
+            }
+        }
+    }
+
+    .sep {}
+}
+
 .text-box {
+    color: rgba($color: $white, $alpha: 0.4);
 
     h1,
     h2,
@@ -271,7 +319,8 @@ h5 {
     h4,
     h5,
     h6 {
-        @include adaptive-value('margin-bottom', 30, 16, 1);
+        @include adaptive-value('margin-bottom', 30, 15, 1);
+        color: $white;
 
         &:not(:first-child) {
             margin-top: 40px;
@@ -283,18 +332,6 @@ h5 {
         font-weight: 600;
     }
 
-    h1 {
-        @include adaptive-value('font-size', 70, 32, 1);
-    }
-
-    h2 {
-        @include adaptive-value('font-size', 46, 26, 1);
-    }
-
-    h3 {
-        @include adaptive-value('font-size', 36, 22, 1);
-    }
-
     p,
     ol,
     ul,
@@ -304,7 +341,8 @@ h5 {
     em,
     i {
         margin-bottom: 1em;
-        @include adaptive-value('font-size', 20, 14, 1);
+        color: rgba($color: $white, $alpha: 0.4);
+        line-height: 130%;
     }
 
     b,
@@ -312,7 +350,9 @@ h5 {
         font-weight: 600;
     }
 
-    a {}
+    a {
+        color: $white;
+    }
 
     & > :last-child {
         margin-bottom: 0;
@@ -320,22 +360,39 @@ h5 {
 
     ul,
     ol {
-        padding-left: 1.5em;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
 
-        & > :not(:last-child) {
-            margin-bottom: 0.75em;
+    ol {
+        list-style: decimal;
+        padding-left: 24px;
+        position: relative;
+
+        li {
+            list-style: decimal;
         }
     }
 
     ul {
         li {
-            list-style: disc;
-        }
-    }
+            padding-left: 18px;
+            position: relative;
 
-    ol {
-        li {
-            list-style: decimal;
+            &:before {
+                position: absolute;
+                content: '';
+                left: 0;
+                top: 8px;
+                width: 8px;
+                height: 8px;
+                background-color: $white;
+
+                @media (max-width:1024px) {
+                    top: 6px;
+                }
+            }
         }
     }
 
@@ -358,6 +415,93 @@ h5 {
     figcaption {
         display: block;
         font-size: 12px;
-        margin-top: 1em;
+        margin-top: 0.5em;
+    }
+}
+
+.load-more {
+    width: 100%;
+    margin-top: 100px;
+
+    @media (max-width:1024px) {
+        margin-top: 40px;
+    }
+}
+
+ul.page-numbers {
+    margin-inline: auto;
+    margin-top: 100px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1px;
+
+    @media (max-width:768px) {
+        margin-top: 40px;
+    }
+
+    li {
+        flex: 0 0 auto;
+    }
+
+    a,
+    span {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        width: 58px;
+        height: 58px;
+        transition: all 0.3s ease 0s;
+        color: rgba($color: $white, $alpha: 0.4);
+
+        @media (max-width:768px) {
+            width: 36px;
+            height: 36px;
+        }
+
+        img,
+        svg {
+            width: 16px;
+            height: 16px;
+            stroke: $white;
+            flex: 0 0 auto;
+            opacity: 0.4;
+            transition: all 0.3s ease 0s;
+
+            @media (max-width:1024px) {
+                width: 14px;
+                height: 14px;
+            }
+        }
+
+        &.prev {
+
+            img,
+            svg {
+                transform: rotate(180deg);
+            }
+        }
+    }
+
+    a {
+        background-color: rgba($color: $white, $alpha: 0.03);
+
+        &:hover {
+            background-color: $white;
+            color: $black;
+
+            img,
+            svg {
+                stroke: $black;
+            }
+        }
+    }
+
+    span:not(.dots) {
+        background-color: $white;
+        color: $black;
     }
 }

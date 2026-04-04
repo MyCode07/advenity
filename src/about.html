@@ -1,0 +1,83 @@
+@@include('./html/head.html', {
+"title":"О нас",
+})
+
+@@include('./html/header.html', {
+"class":"",
+})
+
+<main>
+
+    <section class="section page-top">
+        <div class="section__container _container">
+            <div class="section__body">
+                <div class="breadcrumbs">
+                    <ul>
+                        <li>
+                            <a>
+                                <span>Главная</span>
+                            </a>
+                            <div class="sep">/</div>
+                        </li>
+                        <li>
+                            <span>О нас</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="h1">
+                    <h1>О Serenity</h1>
+                </div>
+
+                <div class="about-text">
+                    <p>Уже более 14 лет мы разрабатываем сайты и интернет-магазины по всему миру для наших клиентов, а
+                        также обеспечиваем
+                        полную поддержку и продвижение их бизнеса в интернете. Многие годы мы успешно сотрудничаем с
+                        малым, средним и крупным
+                        бизнесом по всей России, а также с зарубежными клиентами из Сингапура, Египта и США.</p>
+
+                    <p>Обращаясь к нам, вы получаете не только качественные услуги, но и постоянную своевременную
+                        поддержку, что стратегически
+                        важно при продвижении вашего бизнеса в интернете.</p>
+
+                    <p>Мы с энтузиазмом возьмемся за реализацию любой digital задачи, а многолетний опыт и
+                        сотрудничество с профессиональными
+                        партнерами, позволит достичь наилучшего результата.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section certs" id="certs">
+        <div class="section__container _container">
+            <div class="section__body grid grid-2">
+                <div class="section__top">
+                    <span>
+                        <div class="dot"></div>Сертификаты
+                    </span>
+                    <h2>Сертификаты</h2>
+                </div>
+                <ol>
+                    <li>
+                        <a href="img/cert.png" data-fancybox="certs">
+                            <img src="img/cert.png" alt="">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="img/cert.png" data-fancybox="certs">
+                            <img src="img/cert.png" alt="">
+                        </a>
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </section>
+
+    @@include('html/parts/partners.html',{})
+    @@include('html/parts/callback.html',{})
+
+
+</main>
+
+@@include('./html/footer.html')
+@@include('./html/scripts.html')

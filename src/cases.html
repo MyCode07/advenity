@@ -1,0 +1,89 @@
+@@include('./html/head.html', {
+"title":"Проекты",
+})
+
+@@include('./html/header.html', {
+"class":"",
+})
+
+<main>
+
+    <section class="section page-top">
+        <div class="section__container _container">
+            <div class="section__body">
+                <div class="breadcrumbs">
+                    <ul>
+                        <li>
+                            <a>
+                                <span>Главная</span>
+                            </a>
+                            <div class="sep">/</div>
+                        </li>
+                        <li>
+                            <span>Проекты</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="h1">
+                    <h1>Проекты</h1>
+                </div>
+
+                <div class="cases">
+                    <div class="cases-terms">
+                        <button class="cases-terms__filter _btn">
+                            <span>Все</span>
+                            <img src="img/icons/filter.svg" alt="">
+                        </button>
+                        <button class="cases-terms__item _active">Все</button>
+                        <button class="cases-terms__item">Лендинг</button>
+                        <button class="cases-terms__item">Интернет-магазин</button>
+                        <button class="cases-terms__item">Сайт-каталог</button>
+                        <button class="cases-terms__item">Корпоративный сайт</button>
+                    </div>
+
+                    <div class="grid grid-2">
+                        @@include('html/parts/case.html',{})
+                        @@include('html/parts/case.html',{})
+                        @@include('html/parts/case.html',{})
+                        @@include('html/parts/case.html',{})
+                        @@include('html/parts/case.html',{})
+                    </div>
+
+                    <a href="" class="_btn load-more">
+                        <span>Загрузить <br> ещё</span>
+                        <svg width="16" height="16" viewBox="0 0 16 16">
+                            <use xlink:href='img/svg/icons.svg#arrow-btn' />
+                        </svg>
+                    </a>
+
+                    <ul class="page-numbers">
+                        <li><a class="prev page-numbers" href="">
+                                <svg width="15" height="15" viewBox="0 0 15 15">
+                                    <use xlink:href='img/svg/icons.svg#arrow-right' />
+                                </svg>
+                            </a></li>
+                        <li><span aria-label="Страница 1" aria-current="page" class="page-numbers current">1</span></li>
+                        <li><a aria-label="Страница 2" class="page-numbers" href="">2</a></li>
+                        <li><a aria-label="Страница 3" class="page-numbers" href="">3</a></li>
+                        <li><span class="page-numbers dots">…</span></li>
+                        <li><a aria-label="Страница 7" class="page-numbers" href="">7</a></li>
+                        <li><a aria-label="Страница 8" class="page-numbers" href="">8</a></li>
+                        <li><a class="next page-numbers" href="">
+                                <svg width="15" height="15" viewBox="0 0 15 15">
+                                    <use xlink:href='img/svg/icons.svg#arrow-right' />
+                                </svg>
+                            </a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    @@include('html/parts/reviews.html',{})
+    @@include('html/parts/partners.html',{})
+
+</main>
+
+@@include('./html/footer.html')
+@@include('./html/scripts.html')

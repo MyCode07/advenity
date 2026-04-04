@@ -12,6 +12,7 @@ import { maskInputs } from "./static/inputmask.js";
 import { stickyHeader } from "./parts/header.js";
 import { runTicker } from "./static/ticker.js";
 import { Fancybox } from "@fancyapps/ui";
+import { accorden } from "./static/accordeon.js";
 // import { replaceDomElements } from "./static/replace.js";
 
 // replaceDomElements()
@@ -21,6 +22,7 @@ playVideoAction();
 runTicker()
 Fancybox.bind("[data-fancybox]", {
 });
+accorden()
 
 document.addEventListener('click', function (e) {
     let targetEl = e.target;

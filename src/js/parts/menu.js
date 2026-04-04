@@ -19,12 +19,19 @@ document.addEventListener('click', function (e) {
         }
     }
 
-
     if (targetEl.tagName == 'A' && targetEl.closest('.menu') && document.querySelector('.menu._open')) {
         burger.classList.remove('_active');
         burger.textContent = burger.dataset.textShow
         menu.classList.remove('_open');
         unLockPadding();
+    }
+
+    if (targetEl.classList.contains('lang')) {
+        targetEl.closest('.lang').classList.toggle('_open');
+    }
+
+    if (targetEl.classList.contains('cases-terms__filter')) {
+        targetEl.closest('.cases-terms').classList.toggle('_open');
     }
 })
 
