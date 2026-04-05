@@ -138,6 +138,30 @@
         }
     }
 
+    // .form__btn
+    &__btn {
+        display: flex;
+        align-items: center;
+        gap: 40px;
+        margin-top: 40px;
+
+        @media (max-width:1024px) {
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        & > img {
+            width: 82px;
+            flex: 0 0 auto;
+        }
+
+        ._btn {
+            margin-top: 0;
+            width: auto;
+            flex: 1 1 auto;
+        }
+    }
+
     .wpcf7-response-output {
         display: none !important;
     }

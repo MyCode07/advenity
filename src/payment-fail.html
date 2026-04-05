@@ -1,0 +1,51 @@
+@@include('./html/head.html', {
+"title":"Оплата не прошла",
+})
+
+@@include('./html/header.html', {
+"class":"",
+})
+
+<main>
+
+    <section class="hero hero-page hero-payment hero-payment__fail">
+        <div class="img">
+            <img src="img/payment-fail.png" class="_desktop" alt="">
+            <img src="img/payment-fail-mb.png" class="_mobile" alt="">
+        </div>
+        <div class="hero__container _container">
+            <div class="hero__body">
+                <div class="breadcrumbs">
+                    <ul>
+                        <li>
+                            <a>
+                                <span>Главная</span>
+                            </a>
+                            <div class="sep">/</div>
+                        </li>
+                        <li>
+                            <span>Оплата не прошла</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="h1">
+                    <h1>Оплата не прошла</h1>
+                </div>
+                <p class="_subtitle">Что-то пошло не так и ваша оплата не прошла. Не отчаивайтесь и попробуйте еще раз.
+                    Если вам понадобится дополнительная
+                    поддержка, обращайтесь на hello@serenity-vl.ru</p>
+                <a href="" class="_btn _btn-white">
+                    <span>Вернуться <br>
+                        в маркет</span>
+                    <svg width="16" height="16" viewBox="0 0 16 16">
+                        <use xlink:href='img/svg/icons.svg#arrow-btn' />
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+@@include('./html/footer.html')
+@@include('./html/scripts.html')

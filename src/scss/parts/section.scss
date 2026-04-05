@@ -817,3 +817,15 @@ body:has(section.partners:last-child)footer {
         row-gap: 40px;
     }
 }
+
+.payment {
+    
+    .img {
+        position: relative;
+        z-index: unset;
+        height: auto;
+        min-height: 580px;
+    }
+
+
+}

@@ -1,0 +1,49 @@
+@@include('./html/head.html', {
+"title":"Главная",
+})
+
+@@include('./html/header.html', {
+"class":"",
+})
+
+<main>
+
+    <section class="hero hero-page hero-payment hero-payment__success">
+        <video loop="" muted="" playsinline="" poster="" preload="none" class="_video">
+            <source data-src="files/video.mp4" type="video/mp4">
+        </video>
+        <div class="hero__container _container">
+            <div class="hero__body">
+                <div class="breadcrumbs">
+                    <ul>
+                        <li>
+                            <a>
+                                <span>Главная</span>
+                            </a>
+                            <div class="sep">/</div>
+                        </li>
+                        <li>
+                            <span>Оплата не прошла</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="h1">
+                    <h1>Успешная оплата</h1>
+                </div>
+                <p class="_subtitle">На вашу почту в течение 5-10 минут придет письмо с ссылкой для скачивания файла и
+                    ключом лицензии. Если вам понадобится
+                    дополнительная поддержка, обращайтесь на hello@serenity-vl.ru</p>
+                <a href="" class="_btn _btn-white">
+                    <span>На галвную</span>
+                    <svg width="16" height="16" viewBox="0 0 16 16">
+                        <use xlink:href='img/svg/icons.svg#arrow-btn' />
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+@@include('./html/footer.html')
+@@include('./html/scripts.html')

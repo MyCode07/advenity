@@ -1,0 +1,85 @@
+@@include('./html/head.html', {
+"title":"Оплата услуг",
+})
+
+@@include('./html/header.html', {
+"class":"",
+})
+
+<main>
+
+    <section class="section payment page-top">
+        <div class="section__container _container">
+            <div class="section__body">
+                <div class="breadcrumbs">
+                    <ul>
+                        <li>
+                            <a>
+                                <span>Главная</span>
+                            </a>
+                            <div class="sep">/</div>
+                        </li>
+                        <li>
+                            <span>Оплата услуг</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="h1">
+                    <h1>Оплата услуг</h1>
+                </div>
+
+                <div class="grid grid-2">
+                    <div class="form">
+                        <form action="">
+                            <div class="form__item" data-required>
+                                <input type="text">
+                                <span>Имя</span>
+                            </div>
+                            <div class="form__item" data-required>
+                                <input type="text" class="_mask-phone">
+                                <span>Телефон</span>
+                            </div>
+                            <div class="form__item" data-required>
+                                <input type="email">
+                                <span>Email</span>
+                            </div>
+                            <div class="form__item" data-required>
+                                <textarea name="" id=""></textarea>
+                                <span>Комментарий</span>
+                            </div>
+                            <div class="form__item" data-required>
+                                <input type="text">
+                                <span>Сумма</span>
+                            </div>
+                            <div class="form-privacy">Нажимая на кнопку «Заплатить»,
+                                я даю согласие на обработку персональных данных
+                                и соглашаюсь с <a href="/privacy/" target="_blank">политикой конфиденциальности</a>
+                            </div>
+                            <div class="form__btn">
+                                <button class="_btn _btn-white">
+                                    <span>Заплатить</span>
+                                    <svg width="16" height="16" viewBox="0 0 16 16">
+                                        <use xlink:href='img/svg/icons.svg#arrow-btn' />
+                                    </svg>
+                                </button>
+                                <img src="img/icons/yukassa.svg" alt="">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="img _desktop">
+                        <video loop="" muted="" playsinline="" poster="" preload="none" class="_video">
+                            <source data-src="files/video.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+</main>
+
+@@include('./html/footer.html')
+@@include('./html/scripts.html')

@@ -1,0 +1,115 @@
+@@include('./html/head.html', {
+"title":"Оформление покупки",
+})
+
+@@include('./html/header.html', {
+"class":"",
+})
+
+<main>
+
+    <section class="section page-top">
+        <div class="section__container _container">
+            <div class="section__body">
+                <div class="breadcrumbs">
+                    <ul>
+                        <li>
+                            <a>
+                                <span>Главная</span>
+                            </a>
+                            <div class="sep">/</div>
+                        </li>
+                        <li>
+                            <span>Оформление покупки</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="h1">
+                    <h1>Оформление покупки</h1>
+                </div>
+
+                <div class="cart">
+                    <div class="cart-items">
+                        <div class="cart-item">
+                            <a href="" class="img">
+                                <img src="img/case.png" alt="">
+                            </a>
+                            <div class="cart-item__data">
+                                <div class="cart-item__title">
+                                    <h4><a href="">Парсер цен с сайта Farpost.ru</a></h4>
+                                    <span class="price">4 990 ₽</span>
+                                </div>
+                                <div class="cart-item__descr">
+                                    <p>Парсер заменяет все ссылки в файле EXCEL на стоимость в объявлении, работает
+                                        только с
+                                        сайтом farpost.ru (фарпост).</p>
+                                    <a href="#" class="cart-item__delete">удалить</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cart-item">
+                            <a href="" class="img">
+                                <img src="img/case.png" alt="">
+                            </a>
+                            <div class="cart-item__data">
+                                <div class="cart-item__title">
+                                    <h4><a href="">Парсер цен с сайта Farpost.ru</a></h4>
+                                    <span class="price">4 990 ₽</span>
+                                </div>
+                                <div class="cart-item__descr">
+                                    <p>Парсер заменяет все ссылки в файле EXCEL на стоимость в объявлении, работает
+                                        только с
+                                        сайтом farpost.ru (фарпост).</p>
+                                    <a href="#" class="cart-item__delete">удалить</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cart-total">
+                        <h4>Заказ</h4>
+
+                        <div class="form__item" data-required>
+                            <input type="text">
+                            <span>Имя</span>
+                        </div>
+                        <div class="form__item" data-required>
+                            <input type="email">
+                            <span>Email</span>
+                        </div>
+
+                        <div class="payment">
+                            <p>Способ оплаты:</p>
+                            <label class="_btn">
+                                <span>Онлайн оплата</span>
+                                <img src="img/icons/yukassa.svg" alt="">
+                            </label>
+                        </div>
+                        <div class="grid grid-2">
+                            <a href="" class="_btn _btn-white">
+                                <span>Оплатить <br> заказ</span>
+                                <svg width="16" height="16" viewBox="0 0 16 16">
+                                    <use xlink:href='img/svg/icons.svg#arrow-btn' />
+                                </svg>
+                            </a>
+                            <a href="" class="_btn">
+                                <span>Отменить
+                                    заказ <br> заказ</span>
+                                <svg width="16" height="16" viewBox="0 0 16 16">
+                                    <use xlink:href='img/svg/icons.svg#arrow-btn' />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    @@include('html/parts/callback.html',{})
+
+</main>
+
+@@include('./html/footer.html')
+@@include('./html/scripts.html')

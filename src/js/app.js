@@ -3,27 +3,24 @@ import "./parts/menu.js";
 import "./parts/tabs.js";
 import "./parts/sliders.js";
 import "./parts/choises.js";
-// import "./parts/show-more.js";
+import "./parts/popup.js";
 import "./parts/input-placeholder.js";
-// import "./parts/select.js";
 
 import { playVideoAction } from "./parts/video.js";
-
 import { maskInputs } from "./static/inputmask.js";
 import { stickyHeader } from "./parts/header.js";
 import { runTicker } from "./static/ticker.js";
-import { Fancybox } from "@fancyapps/ui";
 import { accorden } from "./static/accordeon.js";
-// import { replaceDomElements } from "./static/replace.js";
+import { Fancybox } from "@fancyapps/ui";
 
-// replaceDomElements()
 maskInputs('+7 (999) 999-99-99', '._mask-phone')
 stickyHeader()
 playVideoAction();
 runTicker()
+accorden()
+
 Fancybox.bind("[data-fancybox]", {
 });
-accorden()
 
 document.addEventListener('click', function (e) {
     let targetEl = e.target;

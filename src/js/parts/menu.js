@@ -33,6 +33,10 @@ document.addEventListener('click', function (e) {
     if (targetEl.classList.contains('cases-terms__filter')) {
         targetEl.closest('.cases-terms').classList.toggle('_open');
     }
+
+    if (targetEl.classList.contains('widget-open')) {
+        document.querySelector('.widget').classList.toggle('_open');
+    }
 })
 
 function clickOutsideElement(elemSelector = '', excludedSelectors = [], activeClass = '_open') {
