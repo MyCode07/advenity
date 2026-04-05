@@ -139,8 +139,32 @@ main {
     .next {}
 }
 
+.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    span {
+        flex: 0 0 auto;
+        display: block;
+        width: 10px;
+        height: 10px;
+        background-color: rgba($color: $white, $alpha: 0.2);
+        cursor: pointer;
+
+        &.swiper-pagination-bullet-active {
+            background-color: $white;
+        }
+    }
+}
+
 [data-open-popup] * {
     pointer-events: none;
+}
+
+[data-tab-content]:not(._active) {
+    display: none !important;
 }
 
 img,
@@ -180,6 +204,24 @@ h1 {
         background-color: rgba($color: $white, $alpha: 0.2);
         position: absolute;
         content: '';
+    }
+
+    &:has(.price) {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        gap: 40px;
+
+        @media (max-width:1024px) {
+            flex-direction: column;
+            gap: 20px;
+            align-items: flex-start;
+        }
+    }
+
+    .price {
+        white-space: nowrap;
+        @include adaptive-value('font-size', 80, 38, 1);
     }
 }
 
@@ -311,6 +353,11 @@ h5 {
 }
 
 .text-box {
+    &._small {
+        max-width: 900px;
+        margin-inline: auto;
+    }
+
     color: rgba($color: $white, $alpha: 0.4);
 
     h1,
@@ -329,7 +376,7 @@ h5 {
 
     b,
     strong {
-        font-weight: 600;
+        font-weight: 500;
     }
 
     p,
@@ -343,11 +390,6 @@ h5 {
         margin-bottom: 1em;
         color: rgba($color: $white, $alpha: 0.4);
         line-height: 130%;
-    }
-
-    b,
-    strong {
-        font-weight: 600;
     }
 
     a {
@@ -414,7 +456,6 @@ h5 {
 
     figcaption {
         display: block;
-        font-size: 12px;
         margin-top: 0.5em;
     }
 }

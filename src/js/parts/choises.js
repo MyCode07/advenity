@@ -1,6 +1,6 @@
 import Choices from "choices.js";
 
-const choices = document.querySelectorAll('.wpclv-terms-select');
+const choices = document.querySelectorAll('.variations_form select');
 if (choices.length) {
     choices.forEach(element => {
         new Choices(element, {

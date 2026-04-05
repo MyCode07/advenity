@@ -102,6 +102,24 @@
             }
         }
     }
+
+    // .section__img
+    &__img {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: -1;
+
+        img,
+        picture {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
 }
 
 .about {
@@ -555,7 +573,9 @@ body:has(section.partners:last-child)footer {
         margin-top: 60px;
     }
 
-    .h1 {}
+    .h1 {
+        margin-bottom: 40px;
+    }
 
     .about-text {
         display: flex;
@@ -757,5 +777,43 @@ body:has(section.partners:last-child)footer {
             width: 50%;
             margin-left: auto;
         }
+    }
+}
+
+.contacts {
+    .grid {
+        row-gap: 80px;
+
+        @media (max-width:1024px) {
+            row-gap: 40px;
+        }
+    }
+}
+
+.page-404 {
+    margin-bottom: 0 !important;
+
+    .section__body {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        gap: 40px;
+
+        @media (max-width:1024px) {
+            gap: 20px;
+        }
+
+        p {
+            max-width: 500px;
+        }
+    }
+}
+
+.poducts {
+    .grid {
+        row-gap: 40px;
     }
 }

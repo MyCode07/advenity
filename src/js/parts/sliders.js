@@ -1,5 +1,5 @@
 import Swiper from 'swiper';
-import { Navigation } from 'swiper/modules';
+import { Navigation, Pagination } from 'swiper/modules';
 
 const sliders = document.querySelectorAll('.swiper');
 if (sliders.length) {
@@ -27,6 +27,21 @@ if (sliders.length) {
                         spaceBetween: 20
                     }
                 }
+            });
+        }
+
+
+        if (slider.closest('.single-product')) {
+            new Swiper(slider, {
+                modules: [
+                    Pagination
+                ],
+                pagination: {
+                    el: pagination,
+                    clickable: true,
+                },
+                slidesPerView: 1,
+                spaceBetween: 10,
             });
         }
     })
