@@ -163,6 +163,10 @@
             position: absolute;
             top: 120px;
             left: 0;
+
+            @media (max-width:1024px) {
+                top: 80px;
+            }
         }
 
         .hero__body {
@@ -173,6 +177,8 @@
             ._subtitle {
                 max-width: 580px;
             }
+
+            .h1 {}
         }
 
         // .hero-payment__fail
@@ -181,6 +187,10 @@
                 max-width: 1160px;
                 left: unset;
                 right: 50%;
+
+                img,picture{
+                    object-position: right;
+                }
 
                 @media (max-width:1024px) {
                     right: 0;

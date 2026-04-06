@@ -192,6 +192,12 @@
         }
     }
 
+    .section__top {
+        @media (min-width:1025px) {
+            margin-bottom: 80px;
+        }
+    }
+
     // .cases-homee
     &-home div.grid {
         & > :last-child {
@@ -208,10 +214,10 @@
         flex-direction: column;
         align-items: center;
         gap: 40px;
-        margin-top: 100px;
+        margin-top: 150px;
 
         @media (max-width:1024px) {
-            margin-top: 70px;
+            margin-top: 75px;
         }
 
         div {
@@ -224,6 +230,12 @@
                 @include adaptive-value('font-size', 22, 18, 1);
                 transform: translate(0, 50%);
                 height: fit-content;
+            }
+        }
+
+        ._btn {
+            @media (max-width:1024px) {
+                width: 180px;
             }
         }
     }
@@ -269,6 +281,7 @@
 
         // .cases-terms__item
         &__item {
+            font-size: 16px;
             height: 58px;
             padding: 20px 40px;
             display: flex;
@@ -280,6 +293,8 @@
 
             @media (max-width:1024px) {
                 display: none;
+                height: 48px;
+                padding: 15px 10px;
             }
 
             &._active {
@@ -441,6 +456,7 @@
                 p {
                     max-width: 500px;
                     opacity: 0.4;
+                    line-height: 130%;
                 }
             }
 
@@ -580,7 +596,7 @@ body:has(section.partners:last-child)footer {
     .about-text {
         display: flex;
         gap: 40px;
-        padding-top: 40px;
+        padding-bottom: 40px;
 
         @media (min-width:1025px) {
 
@@ -591,10 +607,13 @@ body:has(section.partners:last-child)footer {
             }
         }
 
+        p{
+            line-height: 130%;
+        }
+
         @media (max-width:1024px) {
             flex-direction: column;
             gap: 20px;
-            padding-top: 20px;
         }
     }
 }
@@ -747,6 +766,10 @@ body:has(section.partners:last-child)footer {
 .admin {
     ._subtitle {
         max-width: none;
+
+        @media (max-width:1024px) {
+            font-size: 18px;
+        }
     }
 
     p:not(._subtitle) {
@@ -819,13 +842,10 @@ body:has(section.partners:last-child)footer {
 }
 
 .payment {
-    
     .img {
         position: relative;
         z-index: unset;
         height: auto;
         min-height: 580px;
     }
-
-
 }

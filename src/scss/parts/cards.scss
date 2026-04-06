@@ -70,12 +70,6 @@
             }
         }
     }
-
-    ._btn {
-
-        // ._btn-white
-        &-white {}
-    }
 }
 
 .reviews-item {
@@ -190,7 +184,7 @@
     position: relative;
     gap: 20px;
     counter-increment: type;
-    padding-left: 30%;
+    padding-left: 35%;
     padding-top: 40px;
     border-top: 1px solid rgba($color: $white, $alpha: 0.2);
 
@@ -242,9 +236,16 @@
 
     ._btn {
         margin-top: 20px;
+        padding: 15px;
+        gap: 15px;
+
+        @media (min-width:1025px){
+            width: 180px;
+        }
 
         @media (max-width:1024px) {
             margin-top: 0;
+            padding: 10px;
             gap: 0;
         }
     }
@@ -361,6 +362,7 @@
         @media (max-width:1024px) {
             margin-top: 20px;
             gap: 0;
+            padding: 10px;
         }
     }
 
@@ -541,7 +543,7 @@
     }
 
     p {
-        line-height: 103%;
+        line-height: 130%;
         opacity: 0.4;
 
         @media (min-width:1025px) {
@@ -550,11 +552,11 @@
     }
 
     ._btn {
-        gap: 0;
         margin-top: 20px;
 
         @media (max-width:1024px) {
             margin-top: 0;
+            padding: 10px;
         }
     }
 }

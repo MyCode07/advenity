@@ -73,6 +73,11 @@
                     text-align: center;
                     transition: opacity 0.3s ease 0s;
 
+                    @media (max-width:1024px) {
+                        height: 60px;
+                        padding: 20px;
+                    }
+
                     &:hover {
                         opacity: 0.4;
                     }
