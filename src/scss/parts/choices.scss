@@ -1,0 +1,112 @@
+.choices {
+    width: 220px;
+
+    &:after {
+        display: none !important;
+    }
+
+    &:before {
+        content: '';
+        position: absolute;
+        top: unset;
+        right: 20px;
+        bottom: 20px;
+        background-image: url('@img/icons/arrow-down.svg');
+        width: 16px;
+        height: 16px;
+        background-size: 100%;
+        background-repeat: no-repeat;
+        border: 0;
+
+        @media (max-width:1024px) {
+            right: 15px;
+            bottom: 15px;
+        }
+    }
+
+    &.is-open {
+        &:before {
+            transform: rotate(180deg);
+        }
+    }
+
+    @media (max-width:1024px) {
+        width: 100%;
+    }
+
+    * {
+        color: $white;
+        background: transparent;
+        background-color: transparent;
+        opacity: 1;
+        border-radius: 0;
+    }
+
+    // .choices__inner
+    &__inner {
+        height: 96px;
+        padding: 20px;
+        border-color: rgba($color: $white, $alpha: 0.2);
+        border-top-left-radius: 0 !important;
+        border-top-right-radius: 0 !important;
+
+        @media (max-width:1024px) {
+            height: 80px;
+            padding: 15px;
+        }
+    }
+
+    // .choices__input
+    &__input {}
+
+    // .choices__list
+    &__list {
+        background: transparent;
+        background-color: transparent !important;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        z-index: 2 !important;
+
+        // .choices__list--dropdown
+        &--dropdown {
+            border: 0 !important;
+            margin-top: 4px !important;
+            border-bottom-left-radius: 0 !important;
+            border-bottom-right-radius: 0 !important;
+
+            .choices__item {
+                display: flex;
+                align-items: center;
+                height: 58px;
+                background: transparent;
+                background-color: $black;
+                border: 1px solid rgba($color: $white, $alpha: 0.2);
+
+                &.is-highlighted {
+                    background-color: $black !important;
+                    border-color: $white;
+                }
+
+                &.is-selected {
+                    background-color: $white !important;
+                    border-color: $white;
+                    color: $black;
+                }
+            }
+        }
+    }
+
+    // .choices__item
+    &__item {
+
+        // .choices__item-
+        &- {}
+
+        // .choices__item-
+        &- {}
+    }
+
+    // .choices__placeholder
+    &__placeholder {}
+}

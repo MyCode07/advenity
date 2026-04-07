@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Генератор изображений с текстом - PHP версия</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        h1 {
+            color: white;
+            text-align: center;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .main-container {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .two-columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .upload-area {
+            border: 3px dashed #ccc;
+            border-radius: 15px;
+            padding: 40px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            background: #fafafa;
+        }
+
+        .upload-area:hover {
+            border-color: #667eea;
+            background: #f0f0ff;
+        }
+
+        .preview {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .controls {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 15px;
+        }
+
+        .control-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        input,
+        textarea,
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+
+        input:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        textarea {
+            min-height: 80px;
+            resize: vertical;
+        }
+
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            width: 100%;
+            transition: transform 0.2s;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        .coords {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .result {
+            margin-top: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .download-btn {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            margin-top: 15px;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 20px;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #28a745;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 12px;
+            margin-left: 10px;
+        }
+
+        .info-text {
+            font-size: 12px;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .two-columns {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>🎨 Генератор изображений с текстом <span class="badge">PHP Backend</span></h1>
+    <div class="main-container">
+        <div class="two-columns">
+            <div>
+                <div class="upload-area" id="uploadArea">
+                    <div style="font-size: 48px;">📸</div>
+                    <div style="margin-top: 10px;">Нажмите или перетащите изображение</div>
+                    <div class="info-text">Поддерживаются: JPG, PNG, GIF, WEBP</div>
+                    <input type="file" id="imageInput" accept="image/*" style="display:none">
+                </div>
+                <div id="previewContainer" style="margin-top: 20px; display: none;">
+                    <img id="previewImage" class="preview" alt="Preview">
+                    <div class="info-text" style="text-align: center; margin-top: 10px;">
+                        💡 Кликните по изображению, чтобы установить координаты текста
+                    </div>
+                </div>
+            </div>
+
+            <div class="controls">
+                <div class="control-group">
+                    <label>📝 Текст для наложения:</label>
+                    <textarea id="textInput" placeholder="Введите текст..."></textarea>
+                </div>
+
+                <div class="control-group">
+                    <label>📍 Позиция текста (пиксели):</label>
+                    <div class="coords">
+                        <input type="number" id="xCoord" placeholder="X" value="100">
+                        <input type="number" id="yCoord" placeholder="Y" value="100">
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label>🔤 Размер шрифта:</label>
+                    <input type="range" id="fontSize" min="10" max="150" value="40" step="1">
+                    <span id="fontSizeValue" style="display: inline-block; margin-left: 10px;">40px</span>
+                </div>
+
+                <div class="control-group">
+                    <label>🎨 Цвет текста:</label>
+                    <input type="color" id="fontColor" value="#ffffff">
+                </div>
+
+                <div class="control-group">
+                    <label>🟫 Цвет подложки:</label>
+                    <input type="color" id="bgColor" value="#000000">
+                    <div style="margin-top: 8px;">
+                        <label>Прозрачность подложки:</label>
+                        <input type="range" id="bgOpacity" min="0" max="1" step="0.05" value="0.5">
+                        <span id="opacityValue">50%</span>
+                    </div>
+                </div>
+
+                <button id="generateBtn">✨ Сгенерировать изображение</button>
+            </div>
+        </div>
+
+        <div id="resultContainer" style="display: none;" class="result">
+            <h3>✨ Результат:</h3>
+            <img id="resultImage" class="preview" style="max-width: 100%;">
+            <button id="downloadBtn" class="download-btn">💾 Скачать изображение</button>
+        </div>
+    </div>
+
+    <script>
+        const uploadArea = document.getElementById('uploadArea');
+        const imageInput = document.getElementById('imageInput');
+        const previewImage = document.getElementById('previewImage');
+        const previewContainer = document.getElementById('previewContainer');
+        const generateBtn = document.getElementById('generateBtn');
+        const resultContainer = document.getElementById('resultContainer');
+        const resultImage = document.getElementById('resultImage');
+        const downloadBtn = document.getElementById('downloadBtn');
+
+        // Отображение значений слайдеров
+        const fontSizeSlider = document.getElementById('fontSize');
+        const fontSizeValue = document.getElementById('fontSizeValue');
+        const bgOpacitySlider = document.getElementById('bgOpacity');
+        const opacityValue = document.getElementById('opacityValue');
+
+        fontSizeSlider.addEventListener('input', () => {
+            fontSizeValue.textContent = fontSizeSlider.value + 'px';
+        });
+
+        bgOpacitySlider.addEventListener('input', () => {
+            opacityValue.textContent = Math.round(bgOpacitySlider.value * 100) + '%';
+        });
+
+        let currentBase64 = null;
+        let originalImageElement = null;
+
+        // Загрузка изображения
+        uploadArea.addEventListener('click', () => imageInput.click());
+        uploadArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadArea.style.borderColor = '#667eea';
+            uploadArea.style.background = '#f0f0ff';
+        });
+        uploadArea.addEventListener('dragleave', () => {
+            uploadArea.style.borderColor = '#ccc';
+            uploadArea.style.background = '#fafafa';
+        });
+        uploadArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadArea.style.borderColor = '#ccc';
+            uploadArea.style.background = '#fafafa';
+            const file = e.dataTransfer.files[0];
+            if (file && file.type.startsWith('image/')) {
+                handleImage(file);
+            }
+        });
+
+        imageInput.addEventListener('change', (e) => {
+            if (e.target.files[0]) handleImage(e.target.files[0]);
+        });
+
+        function handleImage(file) {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                currentBase64 = e.target.result;
+                previewImage.src = currentBase64;
+                previewContainer.style.display = 'block';
+                resultContainer.style.display = 'none';
+
+                // Создаем скрытый img элемент для получения размеров
+                const img = new Image();
+                img.onload = () => {
+                    originalImageElement = img;
+                };
+                img.src = currentBase64;
+            };
+            reader.readAsDataURL(file);
+        }
+
+        // Клик по изображению для установки координат
+        previewImage.addEventListener('click', (e) => {
+            if (!originalImageElement) return;
+
+            const rect = previewImage.getBoundingClientRect();
+            const scaleX = originalImageElement.width / rect.width;
+            const scaleY = originalImageElement.height / rect.height;
+
+            const clickX = (e.clientX - rect.left) * scaleX;
+            const clickY = (e.clientY - rect.top) * scaleY;
+
+            document.getElementById('xCoord').value = Math.round(clickX);
+            document.getElementById('yCoord').value = Math.round(clickY);
+
+            // Визуальная обратная связь
+            previewImage.style.cursor = 'crosshair';
+            setTimeout(() => {
+                previewImage.style.cursor = 'pointer';
+            }, 200);
+        });
+
+        // Генерация изображения
+        generateBtn.addEventListener('click', async () => {
+            if (!currentBase64) {
+                alert('📸 Пожалуйста, загрузите изображение');
+                return;
+            }
+
+            const text = document.getElementById('textInput').value;
+            if (!text.trim()) {
+                alert('📝 Введите текст для наложения');
+                return;
+            }
+
+            const x = parseInt(document.getElementById('xCoord').value);
+            const y = parseInt(document.getElementById('yCoord').value);
+            const fontSize = parseInt(document.getElementById('fontSize').value);
+            const fontColor = document.getElementById('fontColor').value;
+            const bgColor = document.getElementById('bgColor').value;
+            const bgOpacity = parseFloat(document.getElementById('bgOpacity').value);
+
+            const backgroundColor = `rgba(${hexToRgb(bgColor)}, ${bgOpacity})`;
+
+            // Показываем индикатор загрузки
+            const originalBtnText = generateBtn.textContent;
+            generateBtn.textContent = '⏳ Генерация...';
+            generateBtn.disabled = true;
+
+            try {
+                const response = await fetch('./generate_image.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        baseImage: currentBase64,
+                        text: text,
+                        x: x,
+                        y: y,
+                        fontSize: fontSize,
+                        fontColor: fontColor,
+                        backgroundColor: backgroundColor
+                    })
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    resultImage.src = data.image;
+                    resultContainer.style.display = 'block';
+
+                    // Прокручиваем к результату
+                    resultContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+                    downloadBtn.onclick = () => {
+                        const link = document.createElement('a');
+                        link.download = `generated_${Date.now()}.png`;
+                        link.href = data.image;
+                        link.click();
+                    };
+                } else {
+                    alert('❌ Ошибка: ' + data.error);
+                }
+            } catch (error) {
+                alert('❌ Ошибка соединения: ' + error.message + '\n\nУбедитесь, что PHP скрипт доступен по адресу generate_image.php');
+            } finally {
+                generateBtn.textContent = originalBtnText;
+                generateBtn.disabled = false;
+            }
+        });
+
+        function hexToRgb(hex) {
+            const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+            return result ? `${parseInt(result[1], 16)}, ${parseInt(result[2], 16)}, ${parseInt(result[3], 16)}` : '0,0,0';
+        }
+    </script>
+</body>
+
+</html>
