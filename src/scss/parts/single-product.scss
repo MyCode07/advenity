@@ -38,10 +38,33 @@
         width: 100%;
         min-width: 0;
         min-height: 0;
+
+        &-slide {
+            @media (min-width:1025px) {
+                min-height: 100%;
+                height: 600px;
+                padding: 40px;
+                background-color: rgba($color: $white, $alpha: 0.03);
+
+                img,
+                picture {
+                    object-fit: contain;
+                    height: 100%;
+                }
+            }
+
+            a {
+                transition: opacity 0.3s ease 0s;
+
+                &:hover {
+                    opacity: 0.9;
+                }
+            }
+        }
     }
 
     h1 {
-        max-width: 1220px;
+        max-width: 1200px;
     }
 
     .text-box {
@@ -150,6 +173,12 @@
             flex-direction: column;
         }
 
+        .variations {
+            @media (max-width:1024px) {
+                width: 100%;
+            }
+        }
+
         .price {
             display: block;
             margin-bottom: 10px;
@@ -170,6 +199,10 @@
         .select {
             flex: 0 0 auto;
 
+            @media (max-width:1024px) {
+                width: 100%;
+            }
+
             label {
                 display: block;
                 margin-bottom: 10px;
@@ -182,5 +215,9 @@
     // .variation-btn
     &-btn {
         flex: 1 1 auto;
+
+        @media (max-width:1024px) {
+            width: 100%;
+        }
     }
 }

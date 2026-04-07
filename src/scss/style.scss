@@ -6,14 +6,14 @@
 @import "common/variables";
 // load mixins
 @import "mixins";
-// load common
-@import "common/common";
 // load swiper
 @import "../../node_modules/swiper/swiper";
 // load fancybox
 @import "../../node_modules/@fancyapps/ui/dist/fancybox/fancybox";
 // load choices
 // @import "../../node_modules/choices.js/src/styles/choices";
+// load common
+@import "common/common";
 // load niceselect
 @import "parts/niceselect";
 // load ticker
