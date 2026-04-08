@@ -132,8 +132,10 @@
         }
     }
 
-    div.grid {
-        .img {}
+    div.grid {}
+
+    .img {
+        mix-blend-mode: hard-light;
     }
 
     ol.grid {
@@ -607,7 +609,7 @@ body:has(section.partners:last-child)footer {
             }
         }
 
-        p{
+        p {
             line-height: 130%;
         }
 

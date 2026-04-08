@@ -57,6 +57,7 @@
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 40px;
+        width: 100%;
 
         @media (min-width:1025px) {
             max-width: 680px;
@@ -188,7 +189,8 @@
                 left: unset;
                 right: 50%;
 
-                img,picture{
+                img,
+                picture {
                     object-position: right;
                 }
 

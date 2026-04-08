@@ -555,3 +555,16 @@ ul.page-numbers {
         color: $black;
     }
 }
+
+label {
+
+    &:has(input[type="checkbox"]),
+    &:has(input[type="radio"]) {
+        cursor: pointer;
+    }
+}
+
+input[type="checkbox"] {
+    accent-color: $white;
+    cursor: pointer;
+}
