@@ -568,3 +568,10 @@ input[type="checkbox"] {
     accent-color: $white;
     cursor: pointer;
 }
+
+._text-animated {
+    .char {
+        transition: color 0.3s ease 0s;
+        display: inline !important;
+    }
+}

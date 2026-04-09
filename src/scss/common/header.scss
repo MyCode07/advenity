@@ -5,7 +5,7 @@
     width: 100%;
     z-index: 10;
     font-size: 16px;
-    font-weight: 500;
+    // font-weight: 500;
     border-bottom: 1px solid rgba($color: $white, $alpha: 0.2);
 
     &._sticky {
@@ -49,7 +49,7 @@
             cursor: pointer;
             fill: none;
             stroke: currentColor;
-            transition: transform 0.3s ease 0s;
+            transition: all 0.3s ease 0s;
             pointer-events: none;
         }
 
@@ -102,11 +102,17 @@
             img,
             svg {
                 transform: rotate(180deg);
+                opacity: 0.4;
             }
         }
 
         &:hover {
             .current-lang {
+                opacity: 0.4;
+            }
+
+            svg,
+            img {
                 opacity: 0.4;
             }
         }
@@ -130,7 +136,13 @@
     }
 
     // .header__btn
-    &__btn {}
+    &__btn {
+        transition: color 0.3s ease 0s;
+
+        &:hover {
+            color: rgba($color: $white, $alpha: 0.4);
+        }
+    }
 
     &__left,
     &__right {
@@ -206,6 +218,13 @@
     }
 
     .soc-item {
+        &:hover {
+
+            img,
+            svg {
+                opacity: 0.4;
+            }
+        }
 
         img,
         svg {
@@ -213,6 +232,7 @@
             height: 16px;
             flex: 0 0 auto;
             fill: $white;
+            transition: opacity 0.3s ease 0s;
         }
     }
 }

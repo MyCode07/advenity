@@ -11,12 +11,14 @@ import { stickyHeader } from "./parts/header.js";
 import { runTicker } from "./static/ticker.js";
 import { accorden } from "./static/accordeon.js";
 import { Fancybox } from "@fancyapps/ui";
+import { animateTextAction } from "./parts/animations.js";
 
 maskInputs('+7 (999) 999-99-99', '._mask-phone')
 stickyHeader()
-playVideoAction();
+playVideoAction()
 runTicker()
 accorden()
+animateTextAction()
 
 Fancybox.bind("[data-fancybox]", {
 });
