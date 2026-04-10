@@ -1,22 +1,19 @@
-const observer = new IntersectionObserver((entries, self) => {
+const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
+        const video = entry.target;
+
         if (entry.isIntersecting) {
-            // Если видео в зоне видимости, подготавливаем его
-            prepareVideo(entry.target);
+            prepareVideo(video);
         } else {
-            // Если видео ушло из зоны видимости - останавливаем
-            pauseVideo(entry.target);
+            pauseVideo(video);
         }
-    })
+    });
 }, {
-    threshold: 0.3 // Видео считается видимым, когда видно хотя бы 30% элемента
+    threshold: 0.3
 });
 
 function prepareVideo(video) {
-    if (!video) return;
-
-    // Проверяем, загружены ли уже источники
-    if (video.dataset.loaded === 'true') return;
+    if (!video || video.dataset.loaded === 'true') return;
 
     const sources = video.querySelectorAll('source[data-src]');
 
@@ -30,7 +27,7 @@ function prepareVideo(video) {
 
     video.load();
     video.dataset.loaded = 'true';
-    playVideo(video)
+    playVideo(video);
     observer.unobserve(video);
 }
 
@@ -38,7 +35,6 @@ function playVideo(video) {
     if (!video || !video.dataset.loaded) return;
 
     const playPromise = video.play();
-
 
     if (playPromise !== undefined) {
         playPromise.catch(error => {
@@ -49,66 +45,84 @@ function playVideo(video) {
 
 function pauseVideo(video) {
     if (!video) return;
-
     video.pause();
-    // Возвращаем постер (если есть data-poster)
-    if (video.dataset.poster) {
-        video.poster = video.dataset.poster;
-    }
-}
-
-function resetVideo(video) {
-    if (!video) return;
-
-    video.pause();
-    video.currentTime = 0;
 
     if (video.dataset.poster) {
         video.poster = video.dataset.poster;
     }
 }
 
-const videos = document.querySelectorAll('._video');
+// Делегирование событий hover с проверками
+document.addEventListener('mouseenter', (e) => {
+    // Проверяем, что target существует и это DOM-элемент
+    const target = e.target;
+    if (!target || !target.nodeType) return;
 
-export const playVideoAction = () => {
-    if (!videos.length) return;
+    // Безопасно ищем родителя
+    const casesItem = target.closest ? target.closest('.cases-item') : null;
+    if (!casesItem) return;
+
+    const video = casesItem.querySelector('._video');
+    if (video && video.tagName === 'VIDEO') {
+        prepareVideo(video);
+        playVideo(video);
+    }
+}, true);
+
+document.addEventListener('mouseleave', (e) => {
+    const target = e.target;
+    if (!target || !target.nodeType) return;
+
+    const casesItem = target.closest ? target.closest('.cases-item') : null;
+    if (!casesItem) return;
+
+    const video = casesItem.querySelector('._video');
+    if (video && video.tagName === 'VIDEO') {
+        pauseVideo(video);
+    }
+}, true);
+
+
+// Функция инициализации видео
+function initVideos(container = document) {
+    const videos = container.querySelectorAll('._video:not([data-initialized])');
 
     videos.forEach(video => {
-        // Наблюдаем за появлением видео в зоне видимости
+        if (video.tagName !== 'VIDEO') return;
 
-        // Ищем проект (родительский элемент с классом .cases-item .img)
         const project = video.closest('.cases-item');
 
-        if (project) {
-            // При наведении на проект - воспроизводим
-            project.addEventListener('mouseenter', () => {
-                console.log('Video play on hover');
-                prepareVideo(video); // Убеждаемся, что видео загружено
-                playVideo(video);
-            });
-
-            // При уходе мыши - ставим на паузу
-            project.addEventListener('mouseleave', () => {
-                console.log('Video pause on leave');
-                pauseVideo(video);
-            });
-        } else {
+        if (!project) {
             observer.observe(video);
-
         }
+
+        video.dataset.initialized = 'true';
+    });
+}
+
+// Наблюдатель за изменениями DOM
+const domObserver = new MutationObserver((mutations) => {
+    mutations.forEach(mutation => {
+        mutation.addedNodes.forEach(node => {
+            if (node.nodeType === 1) { // ELEMENT_NODE
+                if (node.tagName === 'VIDEO' && node.classList && node.classList.contains('_video')) {
+                    initVideos(node.parentNode);
+                }
+
+                if (node.querySelectorAll) {
+                    initVideos(node);
+                }
+            }
+        });
+    });
+});
+
+// Запуск
+export const playVideoAction = () => {
+    initVideos();
+
+    domObserver.observe(document.body, {
+        childList: true,
+        subtree: true
     });
 };
-
-// // Дополнительно: функция для остановки всех видео
-// export const stopAllVideos = () => {
-//     videos.forEach(video => {
-//         pauseVideo(video);
-//     });
-// };
-
-// // Дополнительно: функция для сброса всех видео
-// export const resetAllVideos = () => {
-//     videos.forEach(video => {
-//         resetVideo(video);
-//     });
-// };
