@@ -21,6 +21,17 @@ body {
         overflow: hidden;
     }
 
+    // text-rendering: optimizeLegibility;
+    // -webkit-font-smoothing: antialiased;
+    // -moz-osx-font-smoothing: grayscale;
+    // font-kerning: normal;
+    // font-feature-settings: "kern" 1,
+    // "liga" 1;
+    // font-synthesis: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-synthesis: none;
+
     * {
         line-height: 100%;
     }
@@ -256,7 +267,7 @@ h5 {
 
     span {
         font-size: 16px;
-        font-weight: 500;
+        // font-weight: 500;
         line-height: 110%;
         text-align: left;
     }
@@ -345,7 +356,7 @@ h5 {
             display: flex;
             gap: 10px;
             font-size: 15px;
-            font-weight: 500;
+            // font-weight: 500;
             white-space: nowrap;
 
             @media (max-width:1024px) {
