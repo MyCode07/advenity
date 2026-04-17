@@ -404,6 +404,24 @@
         }
     }
 
+    &:hover {
+        .icon {
+            background-color: $white;
+
+            svg {
+                stroke: $black;
+            }
+        }
+
+        .img {
+            opacity: 0.9;
+        }
+
+        h4 {
+            opacity: 0.4;
+        }
+    }
+
     .img {
         flex: 0 0 auto;
         width: 312px;
@@ -421,10 +439,6 @@
             padding: 0;
         }
 
-        &:hover {
-            opacity: 0.9;
-        }
-
         img,
         picture {
             min-height: 100%;
@@ -432,7 +446,8 @@
         }
     }
 
-    div {
+    // .posts-item__title
+    &__title {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -447,14 +462,7 @@
 
         h4 {
             max-width: 820px;
-
-            a {
-                transition: opacity 0.3s ease 0s;
-
-                &:hover {
-                    opacity: 0.4;
-                }
-            }
+            transition: opacity 0.3s ease 0s;
         }
 
         .meta {
@@ -498,14 +506,6 @@
             flex: 0 0 auto;
             stroke: $white;
             transition: stroke 0.3s ease 0s;
-        }
-
-        &:hover {
-            background-color: $white;
-
-            svg {
-                stroke: $black;
-            }
         }
     }
 }
