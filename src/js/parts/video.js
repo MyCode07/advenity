@@ -1,3 +1,5 @@
+let activeVideo = null;
+
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         const video = entry.target;
@@ -5,61 +7,88 @@ const observer = new IntersectionObserver((entries) => {
         if (entry.isIntersecting) {
             prepareVideo(video);
         } else {
-            pauseVideo(video);
+            pauseVideo(video, true); // полная очистка
         }
     });
 }, {
-    threshold: 0.3
+    threshold: 0.05
 });
 
 function prepareVideo(video) {
-    if (!video || video.dataset.loaded === 'true') return;
+    if (!video) return;
 
     const sources = video.querySelectorAll('source[data-src]');
 
-    if (sources.length) {
-        sources.forEach(source => {
-            source.src = source.dataset.src;
-        });
-    } else if (video.dataset.src) {
-        video.src = video.dataset.src;
+    // Загружаем только один раз
+    if (video.dataset.loaded !== 'true') {
+        if (sources.length) {
+            sources.forEach(source => {
+                if (!source.src) {
+                    source.src = source.dataset.src;
+                }
+            });
+        } else if (video.dataset.src && !video.src) {
+            video.src = video.dataset.src;
+        }
+
+        video.load();
+        video.dataset.loaded = 'true';
     }
 
-    video.load();
-    video.dataset.loaded = 'true';
     playVideo(video);
-    observer.unobserve(video);
 }
 
 function playVideo(video) {
-    if (!video || !video.dataset.loaded) return;
+    if (!video || video.dataset.loaded !== 'true') return;
+
+    // Останавливаем предыдущее видео
+    if (activeVideo && activeVideo !== video) {
+        pauseVideo(activeVideo, true);
+    }
 
     const playPromise = video.play();
 
     if (playPromise !== undefined) {
-        playPromise.catch(error => {
-            console.log('Auto-play prevented:', error);
-        });
+        playPromise.catch(() => { });
     }
+
+    activeVideo = video;
 }
 
-function pauseVideo(video) {
+function pauseVideo(video, reset = false) {
     if (!video) return;
+
     video.pause();
+    video.currentTime = 0;
+
+    if (reset) {
+        const sources = video.querySelectorAll('source');
+
+        sources.forEach(source => {
+            source.removeAttribute('src');
+        });
+
+        video.removeAttribute('src');
+        video.load();
+
+        video.dataset.loaded = 'false';
+    }
 
     if (video.dataset.poster) {
         video.poster = video.dataset.poster;
     }
+
+    if (activeVideo === video) {
+        activeVideo = null;
+    }
 }
 
-// Делегирование событий hover с проверками
+// Hover события
 document.addEventListener('mouseenter', (e) => {
-    // Проверяем, что target существует и это DOM-элемент
     const target = e.target;
     if (!target || !target.nodeType) return;
 
-    // Безопасно ищем родителя
-    const casesItem = target.closest ? target.closest('.cases-item') : null;
+    const casesItem = target.closest?.('.cases-item');
     if (!casesItem) return;
 
     const video = casesItem.querySelector('._video');
@@ -73,17 +102,16 @@ document.addEventListener('mouseleave', (e) => {
     const target = e.target;
     if (!target || !target.nodeType) return;
 
-    const casesItem = target.closest ? target.closest('.cases-item') : null;
+    const casesItem = target.closest?.('.cases-item');
     if (!casesItem) return;
 
     const video = casesItem.querySelector('._video');
     if (video && video.tagName === 'VIDEO') {
-        pauseVideo(video);
+        pauseVideo(video, true);
     }
 }, true);
 
-
-// Функция инициализации видео
+// Инициализация
 function initVideos(container = document) {
     const videos = container.querySelectorAll('._video:not([data-initialized])');
 
@@ -92,6 +120,7 @@ function initVideos(container = document) {
 
         const project = video.closest('.cases-item');
 
+        // Если не внутри hover-блока — следим через observer
         if (!project) {
             observer.observe(video);
         }
@@ -100,12 +129,12 @@ function initVideos(container = document) {
     });
 }
 
-// Наблюдатель за изменениями DOM
+// Отслеживание DOM изменений
 const domObserver = new MutationObserver((mutations) => {
     mutations.forEach(mutation => {
         mutation.addedNodes.forEach(node => {
-            if (node.nodeType === 1) { // ELEMENT_NODE
-                if (node.tagName === 'VIDEO' && node.classList && node.classList.contains('_video')) {
+            if (node.nodeType === 1) {
+                if (node.tagName === 'VIDEO' && node.classList?.contains('_video')) {
                     initVideos(node.parentNode);
                 }
 

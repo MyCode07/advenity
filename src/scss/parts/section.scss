@@ -39,8 +39,8 @@
             gap: 10px;
             font-size: 15px;
             text-transform: uppercase;
-            // font-weight: 500;
 
+            // font-weight: 500;
             @media (max-width:1024px) {
                 font-size: 12px;
                 gap: 5px;
@@ -381,21 +381,21 @@
 
         li {
             min-height: 250px;
+            position: relative;
 
             @media (max-width:1204px) {
                 min-height: 0;
                 padding-top: 20px;
-                position: relative;
+            }
 
-                &:before {
-                    position: absolute;
-                    content: '';
-                    left: -20px;
-                    top: 0;
-                    width: 100vw;
-                    height: 1px;
-                    background-color: rgba($color: $white, $alpha: 0.2);
-                }
+            &:before {
+                position: absolute;
+                content: '';
+                left: -50vw;
+                top: 0;
+                width: 150vw;
+                height: 1px;
+                background-color: rgba($color: $white, $alpha: 0.2);
             }
 
             a {
@@ -617,6 +617,10 @@ body:has(section.partners:last-child)footer {
             flex-direction: column;
             gap: 20px;
         }
+    }
+
+    .services ul > :first-child:before {
+        display: none;
     }
 }
 

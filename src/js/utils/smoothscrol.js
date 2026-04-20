@@ -2,8 +2,8 @@ import SmoothScroll from "smoothscroll-for-websites"
 
 export const smoothscroll = () => {
     SmoothScroll({
-        animationTime: 800,
-        stepSize: 100,
+        animationTime: 600,
+        stepSize: 150,
         accelerationDelta: 35,
         accelerationMax: 2,
         keyboardSupport: true,
@@ -11,6 +11,6 @@ export const smoothscroll = () => {
         pulseAlgorithm: true,
         pulseScale: 4,
         pulseNormalize: 1,
-        touchpadSupport: true,
+        touchpadSupport: false,
     })
 }

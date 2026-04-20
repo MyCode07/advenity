@@ -582,6 +582,9 @@ input[type="checkbox"] {
 
 ._text-animated {
     .char {
+        will-change: color;
+        backface-visibility: hidden;
+        transform: translateZ(0);
         transition: color 0.3s ease 0s;
         display: inline !important;
     }
