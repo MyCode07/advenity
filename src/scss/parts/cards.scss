@@ -393,11 +393,15 @@
     display: flex;
     gap: 40px;
     border-bottom: 1px solid rgba($color: $white, $alpha: 0.2);
+    min-height: 240px;
+    max-height: 240px;
 
     @media (max-width:1024px) {
         flex-direction: column;
         gap: 10px;
         border-bottom: 0;
+        min-height: 0;
+        max-height: 0;
 
         &:not(:last-child) {
             margin-bottom: 40px;

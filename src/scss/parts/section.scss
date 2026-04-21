@@ -380,11 +380,9 @@
         }
 
         li {
-            min-height: 250px;
             position: relative;
 
             @media (max-width:1204px) {
-                min-height: 0;
                 padding-top: 20px;
             }
 
@@ -403,8 +401,12 @@
                 gap: 40px;
                 justify-content: space-between;
                 width: calc(100% + 40px);
+                max-height: 240px;
+                min-height: 240px;
 
                 @media (max-width:1024px) {
+                    min-height: 0;
+                    max-height: none;
                     width: 100%;
                     flex-direction: column;
                 }
@@ -445,7 +447,7 @@
             div {
                 display: flex;
                 flex-direction: column;
-                gap: 40px;
+                gap: 30px;
                 padding: 40px 0;
                 flex: 1 1 auto;
 
@@ -619,8 +621,12 @@ body:has(section.partners:last-child)footer {
         }
     }
 
-    .services ul > :first-child:before {
-        display: none;
+    &:has(.services) {}
+
+    .services {
+        ul > :first-child:before {
+            display: none;
+        }
     }
 }
 

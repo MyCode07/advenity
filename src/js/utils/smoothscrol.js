@@ -3,7 +3,7 @@ import SmoothScroll from "smoothscroll-for-websites"
 export const smoothscroll = () => {
     SmoothScroll({
         animationTime: 600,
-        stepSize: 150,
+        stepSize: 120,
         accelerationDelta: 35,
         accelerationMax: 2,
         keyboardSupport: true,
