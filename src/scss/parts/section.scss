@@ -135,7 +135,6 @@
     div.grid {}
 
     .img {
-        mix-blend-mode: hard-light;
     }
 
     ol.grid {
@@ -621,7 +620,17 @@ body:has(section.partners:last-child)footer {
         }
     }
 
-    &:has(.services) {}
+    &:has(.services) {
+        @media (min-width:1025px) {
+            .h1 {
+                margin-bottom: 0;
+            }
+
+            h1 {
+                margin-bottom: 40px;
+            }
+        }
+    }
 
     .services {
         ul > :first-child:before {
@@ -731,7 +740,6 @@ body:has(section.partners:last-child)footer {
             position: absolute;
             pointer-events: none;
             z-index: -1;
-            mix-blend-mode: hard-light;
             min-width: 260px;
 
             img,

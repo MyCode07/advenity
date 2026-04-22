@@ -7,7 +7,7 @@ import "./parts/popup.js";
 import "./parts/input-placeholder.js";
 
 import { playVideoAction } from "./parts/video.js";
-import { maskInputs } from "./static/inputmask.js";
+// import { maskInputs } from "./static/inputmask.js";
 import { stickyHeader } from "./parts/header.js";
 import { runTicker } from "./static/ticker.js";
 import { accorden } from "./static/accordeon.js";
@@ -15,7 +15,7 @@ import { Fancybox } from "@fancyapps/ui";
 import { animateTextAction } from "./parts/animations.js";
 import { smoothscroll } from "./utils/smoothscrol.js";
 
-maskInputs('+7 (999) 999-99-99', '._mask-phone')
+// maskInputs('+7 (999) 999-99-99', '._mask-phone')
 stickyHeader()
 playVideoAction()
 runTicker()

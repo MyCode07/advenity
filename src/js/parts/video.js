@@ -100,15 +100,16 @@ document.addEventListener('mouseenter', (e) => {
 
 document.addEventListener('mouseleave', (e) => {
     const target = e.target;
-    if (!target || !target.nodeType) return;
+    if (!target || !target.nodeType || !target.classList) return;
 
-    const casesItem = target.closest?.('.cases-item');
-    if (!casesItem) return;
 
-    const video = casesItem.querySelector('._video');
-    if (video && video.tagName === 'VIDEO') {
-        pauseVideo(video, true);
+    if (target.classList.contains('cases-item')) {
+        const video = target.querySelector('._video');
+        if (video && video.tagName === 'VIDEO') {
+            pauseVideo(video);
+        }
     }
+
 }, true);
 
 // Инициализация
